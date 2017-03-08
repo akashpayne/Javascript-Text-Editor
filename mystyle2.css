@@ -1,0 +1,52 @@
+html {
+	height: 100%;
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary {
+	display: block;
+}
+body {
+	padding-left: 2em;
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-weight: normal;
+	font-variant: normal;
+	line-height: normal;
+	color: black;
+	background-color: white;
+	box-shadow:
+	0 0 0 10px hsl(0, 0%, 95%),
+	0 0 0 15px hsl(0, 0%, 99%);  
+	height: 100%;
+}
+.wrapper {
+	min-width: 1000px;
+	max-width: 1000px;
+	margin: 0 auto;
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+}
+/* Header
+-----------------------------------------------------------------------------*/
+.header {
+	height: 150px;
+	background: #FFE680;
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; 
+	font-style: bold;
+	font-weight: normal;
+	font-variant: normal;
+	line-height: normal;
+	color: navy;
+	text-align: center; }
+/* Middle
+-----------------------------------------------------------------------------*/
+
+/* Footer
+-----------------------------------------------------------------------------*/
+.footer {
+	margin: -100px auto 0;
+	min-width: 1000px;
+	max-width: 1000px;
+	height: 100px;
+	background: #BFF08E;
+	position: relative;
+}

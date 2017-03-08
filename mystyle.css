@@ -1,0 +1,31 @@
+body {
+	padding-left: 2em;
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-weight: normal;
+	font-variant: normal;
+	line-height: normal;
+	color: black;
+	background-color: white;
+	box-shadow:
+	0 0 0 10px hsl(0, 0%, 95%),
+	0 0 0 15px hsl(0, 0%, 99%);  
+	height: 100%;}
+
+h1, h2{
+   font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; 
+   font-style: bold;
+   font-weight: normal;
+   font-variant: normal;
+   line-height: normal;
+   color: navy;
+   text-align: center; }
+
+#wordProcessor{
+  width: 920px;
+  margin:0 auto;
+  text-align: left;
+  padding-left: 1em;
+  padding-right: 1em;
+  box-shadow:
+	0 0 0 10px hsl(0, 0%, 95%),
+	0 0 0 15px hsl(0, 0%, 99%);}

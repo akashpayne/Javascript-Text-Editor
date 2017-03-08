@@ -1,0 +1,257 @@
+<!DOCTYPE html> <!-- Akash Payne  *** CO323 2014: Javascript Assessment 2-->
+<html lang="en">
+	<head>
+		<!-- Meta tag(s) -->
+		<meta charset="utf-8">
+		<!-- Page Title -->
+		<title>word processor</title>
+		<!-- Style Source Code -->
+		<style>
+			<!-- Style Sheet -->
+			<link rel="mystyle" type="text/css" href="mystyle.css">
+		</style>
+		<!-- Script Source Code -->
+		<script type="text/javascript"> <!-- type="text/javascript" src="JavaScript.js" -->
+			<!-- Array for counts: quick fix for on and off buttons -->
+			var onOff = new Array();
+				onOff[0] = false; <!-- textArea -->
+				onOff[1] = false; <!-- bold -->
+				onOff[2] = false; <!-- italic -->
+				onOff[3] = false; <!-- underline -->
+				onOff[4] = false; <!-- textFont -->
+				onOff[5] = false; <!-- linethroughText -->
+			<!-- Test Function Function -->
+			<!-- Actually used to set textArea -->
+			<!-- Should be renamed to setTextArea -->
+			function myFunction()
+				{
+					var textArea = document.getElementById("textArea");
+				}
+			<!-- Bold Text Function -->
+			function boldText() 
+				{
+					if (onOff[0]) {					
+						myFunction();
+						textArea.style.fontWeight = "normal";
+						onOff[0] = false;
+					} else if (!onOff[0]) {					
+						myFunction();
+						textArea.style.fontWeight = "bold";
+						onOff[0] = true;
+					}
+				}
+			<!-- Italic Text Function -->	
+			function italicText()
+				{
+					if (onOff[1]) {					
+						myFunction();
+						textArea.style.fontStyle = "normal";
+						onOff[1] = false;
+					} else if (!onOff[1]) {					
+						myFunction();
+						textArea.style.fontStyle = "italic";
+						onOff[1] = true;
+					}
+				}
+			<!-- Underline Text Function ** should combine all textDecoration -->
+			<!-- functions so that you can have multiple textDecorations -->
+			function underlineText()
+				{
+					if (onOff[2]) {					
+						myFunction();
+						textArea.style.textDecoration = "none";
+						onOff[2] = false;
+					} else if (!onOff[2]) {					
+						myFunction();
+						textArea.style.textDecoration = "underline";
+						onOff[2] = true;
+					}
+				}
+			<!-- Linethrough Text Function ** should combine all textDecoration -->
+			<!-- functions so that you can have multiple textDecorations -->
+			function linethroughText()
+				{
+					if (onOff[3])	{					
+						myFunction();
+						textArea.style.textDecoration = "none";
+						onOff[3] = false;
+					} else if (!onOff[3]) {					
+						myFunction();
+						textArea.style.textDecoration = "line-through";
+						onOff[3] = true;
+					}
+				}	
+			<!-- Set Text Font Style Function -->
+			function setTextFontStyle()
+				{
+					myFunction(); 
+					var fontSelectionMenu = document.getElementById("textFont"); 
+					var desiredValue = fontSelectionMenu.options[fontSelectionMenu.selectedIndex].value; 
+					textArea.style.fontFamily = desiredValue; 
+				}					
+			<!-- Set Text color Function -->
+			function setTextcolor()
+				{
+					myFunction();
+					var colorSelectionMenu = document.getElementById("textcolor");
+					var desiredValue = colorSelectionMenu.options[colorSelectionMenu.selectedIndex].value;
+					textArea.style.color = desiredValue;
+				}
+			<!-- Set Text Size Function -->
+			function setFontSize()
+				{
+					myFunction();
+					var sizeSelectionMenu = document.getElementById("fontSize");
+					var desiredValue = sizeSelectionMenu.options[sizeSelectionMenu.selectedIndex].value;
+					textArea.style.fontSize = desiredValue;
+				}
+			<!-- Hide Text Function -->
+			function hideText()
+				{
+					myFunction();
+					textArea.style.visibility = 'hidden';
+				}
+			<!-- Show Text Function -->
+			function showText()
+				{
+					myFunction();
+					textArea.style.visibility = 'visible';
+				}
+			<!-- Select Text Function -->
+			function selectText()
+				{
+					document.getElementById("textArea").select();
+				}
+			<!-- Erase Text Function -->
+			function eraseText() 
+				{
+					document.getElementById("textArea").value = "";
+				}
+			<!-- Function -->
+			function testText()
+				{
+					document.getElementById("textArea").select();
+				}
+			<!-- Format the textArea Function -->
+			function setTextArea(formatted)
+				{
+					var formatted = textArea.value;
+					document.getElementById('textArea').value = formatted;
+				}
+			<!-- get the selected value from textArea -->
+			function getSelected(textArea)
+				{
+					var len = textArea.value.length;
+					var start = textArea.selectionStart;
+					var end = textArea.selectionEnd;
+					var sel = textArea.value.substring(start, end);
+				}
+			<!-- replace the selection from textArea -->
+			function replaceSelected(textArea)
+				{
+					textArea.value = textArea.value.substring(0,start) + replace + textArea.value.substring(end,len);
+				}
+			<!-- BracketArea Function -->	
+			function formatSelection(type)
+				{
+				// code for Mozilla and Chrome
+					// gets textArea
+					myFunction();
+					// sets selected text
+						//getSelected(textArea);
+					var len = textArea.value.length;
+					var start = textArea.selectionStart;
+					var end = textArea.selectionEnd;
+					var sel = textArea.value.substring(start, end);
+					// This is the selected text and alert it
+					// alert(sel);
+					<!-- formatting here -->
+					switch (type) 
+						{
+							case ('parenthesis') :
+							// example:
+								// replaces the selected text
+								var replace = '(' + sel + ')';
+								break;
+							case ('brackets') :
+								var replace = '[' + sel + ']';
+								break;
+							default: 
+								var replace = sel;
+						}
+					// Replacing the selected text with formatted text
+						//replaceSelected(textArea);
+					textArea.value = textArea.value.substring(0,start) + replace + textArea.value.substring(end,len);
+					// Set the textArea 
+					setTextArea(textArea.value);
+				}
+			function highlightSelection()
+				{
+					myFunction();
+					getSelected();
+					highlight();
+					replaceSelected(textArea);
+					setTextArea(textArea.value);
+				}			
+		</script>
+	</head>
+
+	<body>
+		<!-- Header of Page -->
+		<h1> Word Processor </h1>
+		<!-- Toolbar -->	
+		<div id="wordProcessor">
+			<!-- Select Text Area Button -->
+			<input type="button" value="Select" onclick="selectText();">
+			<!-- Bold Text Area Button -->
+			<input type="button" value="B" onclick="boldText();">
+			<!-- Italic Text Area Button -->
+			<input type="button" value="I" onclick="italicText();">
+			<!-- Underline Text Area Button -->
+			<input type="button" value="U" onclick="underlineText();">
+			<!-- linethrough Text Area Button -->
+			<input type="button" value="Linethrough" onclick="linethroughText();">
+			<!-- Hide Text Area Button -->
+			<input type="button" value="Hide" onclick="hideText();">
+			<!-- Show Text Area Button -->
+			<input type="button" value="Show" onclick="showText();">
+			<!-- Font Family of Text Area Button -->
+			<select  id="textFont" onchange="setTextFontStyle();"> 
+				<option value="Arial"> Arial </option>
+				<option value="Times New Roman"> Times New Roman </option>
+				<option value="Courier New"> Courier New </option>
+			</select>
+			<!-- Colour of Text Area Button -->
+			<select  id="textcolor" onchange="setTextcolor();">
+				<option value="black"> Black </option>
+				<option value="blue"> Blue </option>
+				<option value="red"> Red </option> 
+				<option value="green"> Green </option>
+			</select>
+			<!-- Size of Text Area Button -->
+			<select id="fontSize" onchange="setFontSize();">
+				<option value="x-small"> X-Small </option>
+				<option value="small"> Small </option>
+				<option value="medium"> Medium  </option>
+				<option value="large"> Large  </option>
+				<option value="x-large"> X-Large  </option>
+				<option value="xx-large"> XX-Large  </option>
+			</select>
+			<!-- Format Selection -->
+			<input type="button" value="Parenthesis" onclick="formatSelection('parenthesis');">
+			<input type="button" value="Brackets" onclick="formatSelection('brackets');">		
+		</div>
+		<!-- Text Area -->	
+		<div>
+			<!-- Form for Text Area -->
+			<form  id="input" action="html_form_action.asp" method="get">
+				<!-- Text Area -->
+				<textarea rows=20 cols=100 id="textArea"> Please enter text here. </textarea>
+				<br>
+				<!-- Reset Text Area Button -->
+				<input  id="reset" type="reset" value="Reset">
+				<input type="button" value="Erase" onclick="eraseText();">
+			</form>
+		</div>	
+	</body>
+</html>
